@@ -15,6 +15,9 @@ def trav[A, B](i: List[A], doSomething: A => B): Unit = {
   }
 }
 trav(list, println)
+// 4. list apply
+list.apply(1) == list(1)
+
 List() == Nil
 List(1).tail == Nil
 
