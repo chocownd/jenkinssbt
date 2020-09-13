@@ -1,0 +1,14 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "$java_version"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "$java_version"
+    }
+}

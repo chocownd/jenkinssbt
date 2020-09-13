@@ -1,13 +1,5 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
 plugins {
+    id 'java'
     id 'io.freefair.lombok' version "$lombok_plugin_version"
 }
 
@@ -16,7 +8,6 @@ version '1.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'org.jetbrains.kotlin.jvm'
     apply plugin: 'io.freefair.lombok'
 
     sourceCompatibility = java_version
@@ -26,20 +17,7 @@ subprojects {
         mavenCentral()
     }
 
-    compileKotlin {
-        kotlinOptions {
-            jvmTarget = "$java_version"
-        }
-    }
-    compileTestKotlin {
-        kotlinOptions {
-            jvmTarget = "$java_version"
-        }
-    }
-
     dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
         // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
         compile "ch.qos.logback:logback-classic:$logback_version"
     }
