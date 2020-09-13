@@ -1,3 +1,8 @@
 rootProject.name = 'jvm-lang-toolbox'
 
-include 'lang-test:java', 'lang-test:kotlin'
+include 'java'
+include 'kotlin'
+
+for (project in rootProject.children) {
+    project.projectDir = file("lang-test/${project.name}")
+}

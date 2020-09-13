@@ -7,12 +7,17 @@ buildscript {
     }
 }
 
+plugins {
+    id 'io.freefair.lombok' version "$lombok_plugin_version"
+}
+
 group 'chocownd'
 version '1.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'io.freefair.lombok'
 
     sourceCompatibility = java_version
     targetCompatibility = java_version
@@ -34,9 +39,6 @@ subprojects {
 
     dependencies {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-
-        // https://mvnrepository.com/artifact/org.projectlombok/lombok
-        compileOnly "org.projectlombok:lombok:$lombok_version"
 
         // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
         compile "ch.qos.logback:logback-classic:$logback_version"
