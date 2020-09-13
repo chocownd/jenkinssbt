@@ -1,3 +1,3 @@
 rootProject.name = 'jvm-lang-toolbox'
 
-include 'lang-test/java', 'lang-test/kotlin'
+include 'lang-test:java', 'lang-test:kotlin'
