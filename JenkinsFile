@@ -11,5 +11,10 @@ pipeline {
                 sh 'sbt version'
             }
         }
+        stage('Check') {
+            steps {
+                sh 'ls -lah /.cache'
+            }
+        }
     }
 }
