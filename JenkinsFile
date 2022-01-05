@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker { image 'mozilla/sbt' }
+        docker {
+            image 'mozilla/sbt'
+            args '-v $HOME/.cache:/.cache'
+        }
     }
     stages {
         stage('Test') {
