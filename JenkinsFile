@@ -8,12 +8,17 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                sh 'sbt clean'
+                sh 'sbt "langTest/clean"'
             }
         }
         stage('Compile') {
             steps {
-                sh 'sbt compile'
+                sh 'sbt "langTest/compile"'
+            }
+        }
+        stage('Run') {
+            steps {
+                sh 'sbt "langTest/run"'
             }
         }
     }
