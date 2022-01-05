@@ -6,14 +6,14 @@ pipeline {
         }
     }
     stages {
-        stage('Test') {
+        stage('Clean') {
             steps {
-                sh 'sbt version'
+                sh 'sbt clean'
             }
         }
-        stage('Check') {
+        stage('Compile') {
             steps {
-                sh 'ls -lah /.cache'
+                sh 'sbt compile'
             }
         }
     }
