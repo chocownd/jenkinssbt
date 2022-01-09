@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Sbt version') {
             steps {
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt --version'
+                sh 'sbt --version'
             }
         }
         stage('Clean') {
