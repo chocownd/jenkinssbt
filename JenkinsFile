@@ -15,7 +15,7 @@ pipeline {
                 sh 'rm -rf sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz'
-                sh 'tar -zxvf sbt-1.5.5.tgz -C sbtbinary'
+                sh 'tar -zxvf sbt-1.5.5.tgz -C ./sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'ls -lah'
                 sh 'pwd'
