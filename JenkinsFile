@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Sbt version') {
             steps {
-                sh 'sbt --version'
+                sh "${loadSbt} --version"
             }
         }
         stage('Clean') {
@@ -61,6 +61,11 @@ pipeline {
         stage('Execute Uber jar') {
             steps {
                 sh 'java -jar ./lang-test/scala/target/scala-2.12/langTest-assembly-0.1.0-SNAPSHOT.jar'
+            }
+        }
+        stage('Clean up') {
+            steps {
+                sh 'rm -rf sbt'
             }
         }
     }
