@@ -17,7 +17,6 @@ pipeline {
                 sh "mkdir ${sbtBinDir}"
                 sh "tar -zxvf sbt-1.5.5.tgz -C ${sbtBinDir}"
                 sh 'rm -f sbt-1.5.5.tgz'
-                sh "${sbt} --version"
             }
         }
         stage('Sbt version') {
@@ -27,24 +26,22 @@ pipeline {
         }
         stage('Clean') {
             steps {
-//                 sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/clean"'
-                sh "${sbt} \"langTest/clean\""
-//                 sh "${sbt} 'langTest/clean'"
+                sh "${sbt} 'langTest/clean'"
             }
         }
         stage('Compile') {
             steps {
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/compile"'
+                sh "${sbt} 'langTest/compile'"
             }
         }
         stage('Run') {
             steps {
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/run"'
+                sh "${sbt} 'langTest/run'"
             }
         }
         stage('Uber jar') {
             steps {
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt assembly'
+                sh "${sbt} assembly"
             }
         }
         stage('Find Uber jar') {
