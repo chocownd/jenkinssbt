@@ -1,12 +1,17 @@
 pipeline {
     agent {
         docker {
-//             image 'mozilla/sbt'
-            image 'openjdk:8'
+            image 'mozilla/sbt'
+//             image 'openjdk:8'
             args '-v $HOME/.cache:/.cache'
         }
     }
     stages {
+        stage('Sbt version') {
+            steps {
+                sh 'sbt --version'
+            }
+        }
         stage('Clean') {
             steps {
                 sh 'sbt "langTest/clean"'
