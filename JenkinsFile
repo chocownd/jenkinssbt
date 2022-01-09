@@ -1,4 +1,4 @@
-def sbt = 'export PATH=$PATH:$PWD/sbtbinary/bin && sbt'
+def sbt = 'export PATH=$PATH:$PWD/sbtbinary/sbt/bin && sbt'
 
 pipeline {
     agent {
@@ -20,8 +20,8 @@ pipeline {
                 sh 'rm -f sbt-1.5.5.tgz'
 //                 sh 'ls -lah'
 //                 sh 'pwd'
-                sh 'ls ./sbtbinary/bin'
-                sh 'export PATH=$PATH:$PWD/sbtbinary/bin && sbt --version'
+                sh 'ls ./sbtbinary/sbt/bin'
+                sh 'export PATH=$PATH:$PWD/sbtbinary/sbt/bin && sbt --version'
 //                 sh "${sbt} --version"
             }
         }
