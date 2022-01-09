@@ -13,10 +13,10 @@ pipeline {
                 sh 'wget https://github.com/sbt/sbt/releases/download/v1.4.4/sbt-1.4.4.tgz'
                 sh 'tar -zxvf sbt-1.4.4.tgz'
                 sh 'ls -lah'
-                sh 'env'
-                sh 'export PATH=$PATH:$PWD/sbt/bin'
-                sh 'env'
-                sh 'sbt --version'
+//                 sh 'env'
+//                 sh 'export PATH=$PATH:$PWD/sbt/bin'
+//                 sh 'env'
+                sh '$PWD/sbt/bin/sbt --version'
             }
         }
         stage('Sbt version') {
