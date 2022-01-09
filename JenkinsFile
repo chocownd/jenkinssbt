@@ -7,6 +7,7 @@ pipeline {
         }
     }
     stages {
+        def sbt = 'export PATH=$PATH:$PWD/sbt/bin && sbt'
         stage('Install sbt') {
             steps {
                 sh 'ls -lah'
@@ -17,7 +18,7 @@ pipeline {
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'ls -lah'
                 sh 'pwd'
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt --version'
+                sh '${sbt} --version'
             }
         }
         stage('Sbt version') {
