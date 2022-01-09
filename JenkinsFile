@@ -1,4 +1,4 @@
-def sbt = 'export PATH=$PATH:$PWD/sbt/bin && sbt'
+def sbt = 'export PATH=$PATH:$PWD/sbtbinary/bin && sbt'
 
 pipeline {
     agent {
@@ -12,14 +12,14 @@ pipeline {
         stage('Install sbt') {
             steps {
                 sh 'ls -lah'
-                sh 'rm -rf sbt'
+                sh 'rm -rf sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz'
-                sh 'tar -zxvf sbt-1.5.5.tgz'
+                sh 'tar -zxvf sbt-1.5.5.tgz -C sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'ls -lah'
                 sh 'pwd'
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt --version'
+                sh 'export PATH=$PATH:$PWD/sbtbinary/bin && sbt --version'
                 sh "${sbt} --version"
             }
         }
@@ -65,7 +65,7 @@ pipeline {
         }
         stage('Clean up') {
             steps {
-                sh 'rm -rf sbt'
+                sh 'rm -rf sbtbinary'
             }
         }
     }
