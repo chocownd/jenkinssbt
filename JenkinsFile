@@ -1,3 +1,5 @@
+def sbt = 'export PATH=$PATH:$PWD/sbt/bin && sbt'
+
 pipeline {
     agent {
         docker {
@@ -7,7 +9,6 @@ pipeline {
         }
     }
     stages {
-        def sbt = 'export PATH=$PATH:$PWD/sbt/bin && sbt'
         stage('Install sbt') {
             steps {
                 sh 'ls -lah'
