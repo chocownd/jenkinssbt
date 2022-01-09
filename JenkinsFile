@@ -1,12 +1,24 @@
 pipeline {
     agent {
         docker {
-            image 'mozilla/sbt'
-//             image 'openjdk:8'
+//             image 'mozilla/sbt'
+            image 'openjdk:8'
             args '-v $HOME/.cache:/.cache'
         }
     }
     stages {
+        stage('Install sbt') {
+            steps {
+                sh 'ls -lah'
+                sh 'wget https://github.com/sbt/sbt/releases/download/v1.4.4/sbt-1.4.4.tgz'
+                sh 'tar -zxvf sbt-1.4.4.tgz'
+                sh 'ls -lah'
+                sh 'env'
+                sh 'export PATH=$PATH:$PWD/sbt/bin'
+                sh 'env'
+                sh 'sbt --version'
+            }
+        }
         stage('Sbt version') {
             steps {
                 sh 'sbt --version'
