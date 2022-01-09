@@ -1,7 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'mozilla/sbt'
+//             image 'mozilla/sbt'
+            image 'openjdk:8'
             args '-v $HOME/.cache:/.cache'
         }
     }
