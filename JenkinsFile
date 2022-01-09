@@ -22,27 +22,27 @@ pipeline {
         }
         stage('Sbt version') {
             steps {
-                sh 'sbt --version'
+                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt --version'
             }
         }
         stage('Clean') {
             steps {
-                sh 'sbt "langTest/clean"'
+                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/clean"'
             }
         }
         stage('Compile') {
             steps {
-                sh 'sbt "langTest/compile"'
+                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/compile"'
             }
         }
         stage('Run') {
             steps {
-                sh 'sbt "langTest/run"'
+                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/run"'
             }
         }
         stage('Uber jar') {
             steps {
-                sh 'sbt assembly'
+                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt assembly'
             }
         }
         stage('Find Uber jar') {
