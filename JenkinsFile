@@ -1,4 +1,4 @@
-// def loadSbt = "export PATH=$PATH:$PWD/sbt/bin && sbt"
+def loadSbt = 'export PATH=$PATH:$PWD/sbt/bin && sbt'
 
 pipeline {
     agent {
@@ -20,7 +20,7 @@ pipeline {
                 sh 'ls -lah'
                 sh 'pwd'
                 sh 'export PATH=$PATH:$PWD/sbt/bin && sbt --version'
-                sh 'sbt --version'
+                sh "${loadSbt} --version"
             }
         }
         stage('Sbt version') {
