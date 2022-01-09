@@ -10,8 +10,8 @@ pipeline {
         stage('Install sbt') {
             steps {
                 sh 'ls -lah'
-                sh 'rm -rf sbt'
-                sh 'rm sbt-1.5.5.tgz'
+                sh 'rm -rf sbt > /dev/null 2>&1'
+                sh 'rm sbt-1.5.5.tgz > /dev/null 2>&1'
                 sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz'
                 sh 'tar -zxvf sbt-1.5.5.tgz'
                 sh 'rm sbt-1.5.5.tgz'
