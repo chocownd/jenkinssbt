@@ -21,5 +21,15 @@ pipeline {
                 sh 'sbt "langTest/run"'
             }
         }
+        stage('Uber jar') {
+            steps {
+                sh 'sbt assembly'
+            }
+        }
+        stage('Find Uber jar') {
+            steps {
+                sh 'ls -lah'
+            }
+        }
     }
 }
