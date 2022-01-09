@@ -28,8 +28,8 @@ pipeline {
         stage('Clean') {
             steps {
 //                 sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/clean"'
-//                 sh "${sbt} "langTest/clean""
-                sh "${sbt} 'langTest/clean'"
+                sh "${sbt} "langTest/clean""
+//                 sh "${sbt} 'langTest/clean'"
             }
         }
         stage('Compile') {
