@@ -12,17 +12,11 @@ pipeline {
     stages {
         stage('Install sbt') {
             steps {
-//                 sh 'ls -lah'
+                sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz'
                 sh "rm -rf ${sbtBinDir}"
                 sh "mkdir ${sbtBinDir}"
-                sh 'rm -f sbt-1.5.5.tgz'
-                sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz > /dev/null'
                 sh "tar -zxvf sbt-1.5.5.tgz -C ${sbtBinDir}"
                 sh 'rm -f sbt-1.5.5.tgz'
-//                 sh 'ls -lah'
-//                 sh 'pwd'
-                sh 'ls ./sbtbinary/sbt/bin'
-//                 sh 'export PATH=$PATH:$PWD/sbtbinary/sbt/bin && sbt --version'
                 sh "${sbt} --version"
             }
         }
@@ -33,7 +27,8 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/clean"'
+//                 sh 'export PATH=$PATH:$PWD/sbt/bin && sbt "langTest/clean"'
+                sh '${sbt} "langTest/clean"'
             }
         }
         stage('Compile') {
