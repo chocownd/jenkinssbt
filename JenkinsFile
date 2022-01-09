@@ -11,15 +11,16 @@ pipeline {
     stages {
         stage('Install sbt') {
             steps {
-                sh 'ls -lah'
+//                 sh 'ls -lah'
                 sh 'rm -rf sbtbinary'
                 sh 'mkdir sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
-                sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz'
+                sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz > /dev/null'
                 sh 'tar -zxvf sbt-1.5.5.tgz -C sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
-                sh 'ls -lah'
-                sh 'pwd'
+//                 sh 'ls -lah'
+//                 sh 'pwd'
+                sh 'ls ./sbtbinary/bin'
                 sh 'export PATH=$PATH:$PWD/sbtbinary/bin && sbt --version'
 //                 sh "${sbt} --version"
             }
