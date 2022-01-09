@@ -31,5 +31,10 @@ pipeline {
                 sh 'ls -lah'
             }
         }
+        stage('Where am I') {
+            steps {
+                sh 'pwd'
+            }
+        }
     }
 }
