@@ -1,4 +1,5 @@
-def sbt = 'export PATH=$PATH:$PWD/sbtbinary/sbt/bin && sbt'
+def sbtBinDir = 'sbtbinary'
+def sbt = 'export PATH=$PATH:$PWD/' + sbtBinDir + '/sbt/bin && sbt'
 
 pipeline {
     agent {
@@ -12,7 +13,7 @@ pipeline {
         stage('Install sbt') {
             steps {
 //                 sh 'ls -lah'
-                sh 'rm -rf sbtbinary'
+                sh "rm -rf ${sbtBinDir}"
                 sh 'mkdir sbtbinary'
                 sh 'rm -f sbt-1.5.5.tgz'
                 sh 'wget https://github.com/sbt/sbt/releases/download/v1.5.5/sbt-1.5.5.tgz > /dev/null'
